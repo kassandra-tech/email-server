@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import Mail from 'nodemailer/lib/mailer';
 import { EmailModel } from "./email.model";
+import { EmailResponseModel } from './email.response.model';
 
 const nodemailer = require('nodemailer');
 require('dotenv').config();
@@ -32,18 +33,19 @@ export class EmailService {
      *             when the 'html' property is used the email will be formatted in HTML.
      * @returns Information about the status of the email.
      */
-    public async sendEmail(body: EmailModel): Promise<string> {
-        body.to = body.from;
+    public async sendEmail(body: EmailModel): Promise<EmailResponseModel> {
+        body.to = body.from + ',' + FromAddress;
         body.from = FromAddress;
+        var responseMsg = new EmailResponseModel();
 
-        var response = await transporter.sendMail(body)
+        await transporter.sendMail(body)
             .then((result) => {
-                return "message_id: " + result.messageId;
+                responseMsg.id = result.messageId;
             })
             .catch((error) => {
-                return error + " - Unable to send email";
+                responseMsg.error = error + " - Unable to send email";
             });
         
-        return response;
+        return responseMsg;
     }
 }

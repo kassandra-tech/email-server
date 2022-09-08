@@ -5,6 +5,7 @@ import {
     ApiTags,
 } from '@nestjs/swagger';
 import { EmailModel } from './email.model';
+import { EmailResponseModel } from './email.response.model';
 import { EmailService } from './email.service';
 
 /**
@@ -31,7 +32,7 @@ export class EmailController {
         status: 200,
         description: 'message_id: <xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx@kassandra.tech>',
     })
-    async sendEmail(@Body() body: EmailModel): Promise<string> {
+    async sendEmail(@Body() body: EmailModel): Promise<EmailResponseModel> {
         return await this.emailService.sendEmail(body);
     }
 }

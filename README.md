@@ -31,6 +31,24 @@ Setup the environment variables in your cloud build environment.
 npm start
 ```
 
+## Usage
+Clients can send emails using this server by submitting a post request.
+
+Build the POST request with a body
+
+```
+        "from": "from@email.com",
+        "name": "sender name",
+        "subject": "email subject",
+        "text": "email message",
+        "html": "formatted html message"
+```
+
+Note: Since the purpose of this server is to respond to emails,
+The email will be sent from the ```FromAddress``` from the environment, and the ```from``` address from the body will be used as the send address.
+
+Note: If both ```text``` and ```html``` are sent in the body, the ```html``` will be used.
+
 ## Acknowledgements
 [NodeMailer](https://nodemailer.com/about/) was used to do the heavy lifting to send emails.
 
