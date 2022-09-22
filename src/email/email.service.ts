@@ -6,7 +6,13 @@ import { EmailResponseModel } from './email.response.model';
 const nodemailer = require('nodemailer');
 require('dotenv').config();
 
-const { User, Password, FromAddress } = process.env;
+/**
+ * const { User, Password, FromAddress } = process.env;
+ */
+const User = process.env.KAS_MAIL_USER;
+const User = process.env.KAS_MAIL_PASSWORD;
+const User = process.env.KAS_MAIL_FROMADDRESS;
+
 const transporter: Mail = nodemailer.createTransport(
     {
         service: 'gmail',
