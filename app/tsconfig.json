@@ -8,7 +8,6 @@
     "allowSyntheticDefaultImports": true,
     "target": "es2017",
     "sourceMap": true,
-    "rootDir": "app/",
     "outDir": "./dist",
     "baseUrl": "./",
     "incremental": true,
