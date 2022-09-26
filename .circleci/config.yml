@@ -10,4 +10,4 @@ workflows:
     jobs:
       - heroku/deploy-via-git:
           post-steps:
-            - run:  heroku domains:add mail.api.kassandra.tech -a
+            - run:  heroku domains:add mail.api.kassandra.tech --app=kassandra-email-server
