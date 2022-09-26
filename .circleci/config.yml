@@ -8,12 +8,11 @@ workflows:
   #      - github-super-linter/lint
   heroku_deploy:
     jobs:
-      - heroku/deploy-via-git
-        pre-steps:
+      - heroku/deploy-via-git:
+          pre-steps:
             - run:
-              name: Deploy Main to Heroku
-              command: |
-              heroku domains:add mail.api.kassandra.tech
+                command: |
+                heroku domains:add mail.api.kassandra.tech
         filters:
           branches:
             only: feature/ci
