@@ -3,10 +3,6 @@ import { NestFactory } from '@nestjs/core';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { AppModule } from './app.module';
 
-require('dotenv').config();
-
-const { Port } = process.env;
-
 async function bootstrap() {
     const app = await NestFactory.create(AppModule, { cors: true });
     const options = new DocumentBuilder()
