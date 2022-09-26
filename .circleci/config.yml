@@ -3,9 +3,17 @@ orbs:
   github-super-linter: circleci/github-super-linter@1.0
   heroku: circleci/heroku@1.2.6
 workflows:
-#  lint-code:
-#    jobs:
-#      - github-super-linter/lint
+  #  lint-code:
+  #    jobs:
+  #      - github-super-linter/lint
   heroku_deploy:
     jobs:
       - heroku/deploy-via-git
+        pre-steps:
+            - run:
+              name: Deploy Main to Heroku
+              command: |
+              heroku domains:add mail.api.kassandra.tech
+        filters:
+          branches:
+            only: feature/ci
