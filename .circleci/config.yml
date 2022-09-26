@@ -10,7 +10,4 @@ workflows:
     jobs:
       - heroku/deploy-via-git:
           pre-steps:
-            - run: heroku domains:add mail.api.kassandra.tech
-        filters:
-          branches:
-            only: feature/ci
+            - run:  heroku domains:add mail.api.kassandra.tech
