@@ -11,4 +11,4 @@ workflows:
       - heroku/deploy-via-git:
           post-steps:
             - run: heroku domains:add mail.api.kassandra.tech --app=$HEROKU_APP_NAME
-            - run: heroku heroku certs:auto:enable --app=$HEROKU_APP_NAME
+            - run: heroku certs:auto:enable --app=$HEROKU_APP_NAME
