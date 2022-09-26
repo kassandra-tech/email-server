@@ -9,5 +9,5 @@ workflows:
   heroku_deploy:
     jobs:
       - heroku/deploy-via-git:
-          pre-steps:
+          post-steps:
             - run:  heroku domains:add mail.api.kassandra.tech
